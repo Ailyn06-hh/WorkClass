@@ -10,28 +10,28 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 
+// Función composable que representa el menú principal
 @Composable
-fun MainMenuScreens (navController:NavHostController) {
+fun MainMenuScreens(navController: NavHostController) {
     Column(
         modifier = Modifier
-            .padding(10.dp)
-            .fillMaxSize()
-    )
-    {
-        Text("Home Screens")
+            .padding(10.dp)  // Aplica un margen de 10dp alrededor de la columna
+            .fillMaxSize()  // Hace que la columna ocupe toda la pantalla
+    ) {
+        // Sección para la pantalla "Home Screens"
+        Text("Home Screens")  // Texto descriptivo
         Button(
-            onClick = { navController.navigate("Home_Screens") }
+            onClick = { navController.navigate("Home_Screens") }  // Navega a la pantalla HomeScreens
         ) {
-            Text("Go to Home Screens")
+            Text("Go to Home Screens")  // Texto del botón
         }
 
-
-        Text("Test Screen")
+        // Sección para la pantalla "Test Screen"
+        Text("Test Screen")  // Texto descriptivo
         Button(
-            onClick = { navController.navigate("TestScreen") }
+            onClick = { navController.navigate("Test_Screen") }  // Navega a la pantalla TestScreen
         ) {
-            Text("Go to Test Screen" )
+            Text("Go to Test Screen")  // Texto del botón
         }
-
     }
 }
