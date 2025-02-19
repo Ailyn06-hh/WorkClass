@@ -48,10 +48,7 @@ fun HomeScreens(navController: NavHostController) {
         // Llamadas a los composables Content1 y Content2 repetidos
         Content1()
         Content2()
-        Content1()
-        Content2()
-        Content1()
-        Content2()
+
 
         // Texto que indica que estamos en la pantalla principal
         Text("Home Screen")
