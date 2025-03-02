@@ -33,5 +33,20 @@ fun MainMenuScreens(navController: NavHostController) {
         ) {
             Text("Go to Test Screen")  // Texto del botón
         }
+        // Sección para la pantalla "Test Screen"
+        Text("Liverpool Screen")  // Texto descriptivo
+        Button(
+            onClick = { navController.navigate("Liverpool_Screen") }  // Navega a la pantalla TestScreen
+        ) {
+            Text("Go to Liverpool Screen")  // Texto del botón
+        }
+
+        // Sección para la pantalla "Test Screen"
+        Text("Components Screen")  // Texto descriptivo
+        Button(
+            onClick = { navController.navigate("Components_Screen") }  // Navega a la pantalla TestScreen
+        ) {
+            Text("Go to Components Screen")  // Texto del botón
+        }
     }
 }
