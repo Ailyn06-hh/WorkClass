@@ -8,7 +8,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.myapplicationenejun.ui.InterfaceLiverpool.InterfaceLiverpool
+//import com.example.myapplicationenejun.ui.InterfaceLiverpool.InterfaceLiverpool
 import com.example.myapplicationenejun.ui.Screens.ComponentsScreen
 import com.example.myapplicationenejun.ui.Screens.HomeScreens
 import com.example.myapplicationenejun.ui.Screens.MainMenuScreens
@@ -43,7 +43,7 @@ fun SetupNavGraph(navController: NavHostController) {
         composable("Main_Menu") { MainMenuScreens(navController) }  // Ruta para la pantalla del menú principal
         composable("Home_Screens") { HomeScreens(navController) }  // Ruta para la pantalla de inicio
         composable("Test_Screen") { TestScreen(navController) }  // Ruta para la pantalla de prueba
-        composable("Liverpool_Screen") { InterfaceLiverpool(navController) }  // Ruta para la pantalla de prueba
+       // composable("Liverpool_Screen") { InterfaceLiverpool(navController) }  // Ruta para la pantalla de prueba
         composable("Components_Screen") { ComponentsScreen(navController) }  // Ruta para la pantalla de prueba
     }
 }
