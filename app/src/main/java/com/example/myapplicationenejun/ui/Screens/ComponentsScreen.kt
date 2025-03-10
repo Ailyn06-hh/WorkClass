@@ -8,6 +8,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -90,9 +94,11 @@ import androidx.navigation.NavHostController
 import com.example.myapplicationenejun.R
 import com.example.myapplicationenejun.data.MODEL.MenuModel
 import com.example.myapplicationenejun.data.MODEL.PostCardModel
+import com.example.myapplicationenejun.ui.components.PostCardCompactComponent
 import com.example.myapplicationenejun.ui.components.PostCardComponent
 import kotlinx.coroutines.launch
 import java.util.logging.Filter
+import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 
 @Composable
 fun ComponentsScreen(navController: NavHostController){
@@ -495,7 +501,7 @@ fun Bars(){
     Column(
         modifier = Modifier
             .fillMaxSize()
-    ){
+    ) {
         //can use MediumTopAppBar and other similar components to change the top bar size.
         TopAppBar(
             colors = TopAppBarDefaults.topAppBarColors(
@@ -508,25 +514,43 @@ fun Bars(){
                     Icon(imageVector = Icons.Filled.Search, contentDescription = "Search Button")
                 }
                 IconButton(onClick = {}) {
-                    Icon(imageVector = Icons.Filled.Settings, contentDescription = "Settings Button")
+                    Icon(
+                        imageVector = Icons.Filled.Settings,
+                        contentDescription = "Settings Button"
+                    )
                 }
             }
         )
+        /*
         val arrayPosts = arrayOf(
             PostCardModel(1, "Title 1", "Text 1", R.drawable.geto),
             PostCardModel(2, "Title 2", "Text 2", R.drawable.geto),
-            PostCardModel(3, "Title 3", "Text 3", R.drawable.geto)
+            PostCardModel(3, "Title 3", "Text 3", R.drawable.geto),
+            PostCardModel(4, "Title 4", "Text 4", R.drawable.geto),
+            PostCardModel(5, "Title 5", "Text 5", R.drawable.geto),
+            PostCardModel(6, "Title 6", "Text 6", R.drawable.geto),
+            PostCardModel(7, "Title 7", "Text 7", R.drawable.geto),
+            PostCardModel(8, "Title 8", "Text 8", R.drawable.geto),
+            PostCardModel(9, "Title 9", "Text 9", R.drawable.geto)
         )
         //can use Lazy Row to do the same but in a horizontal layout
-        LazyColumn(
+        LazyVerticalGrid(
+            columns = GridCells.Adaptive(minSize = 160.dp),
             modifier = Modifier
                 .fillMaxSize()
                 //the 1f value in the .weight modifier is used to spread the components evenly
                 .weight(1f)
         ) {
-            items(arrayPosts){
-                    item -> PostCardComponent(item.id, item.title, item.text, item.image)
+            items(arrayPosts) { item ->
+                PostCardComponent(item.id, item.title, item.text, item.image)
             }
+        }*/
+        Column(
+          modifier=Modifier
+              .weight(1f)
+              .fillMaxSize()
+        ){
+
         }
         BottomAppBar(
             containerColor = Color.LightGray,
@@ -568,6 +592,24 @@ fun Bars(){
                 Icon(imageVector = Icons.Filled.Home, contentDescription = "")
             }
         }
+    }
+}
+@Composable
+fun Adaptive(){
+    var windowSize = currentWindowAdaptiveInfo().windowSizeClass
+    var height= currentWindowAdaptiveInfo().windowSizeClass.windowHeightSizeClass
+    var size= currentWindowAdaptiveInfo().windowSizeClass.windowWidthSizeClass
+    //Compact width <600 dp Phone Portrait
+    //Medium width >=600 dp < 840 Tablet Portrait
+    // Expanded width >=840 dp Tablet Landscape
+
+    //Compact Height < 480 dp Phone Landscape
+    //Medium Height >=480 dp < 900 dp Tablet Landscape or Phone Portrait
+    //Expanded height >=900 dp Tablet Portrait
+    Column {
+        Text (windowSize.toString())
+        Text(height.toString())
+        //Text(width.toString))
     }
 }
 
