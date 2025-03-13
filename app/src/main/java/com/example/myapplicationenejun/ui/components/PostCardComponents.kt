@@ -24,7 +24,7 @@ import androidx.compose.ui.unit.sp
 import com.example.myapplicationenejun.R
 
 @Composable
-fun PostCardComponent(id:Int, title:String, text:String, image:Int){
+fun PostCardComponents(id:Int, title:String, text:String, image:Int){
     Card(
         modifier = Modifier
             .background(Color.Black)

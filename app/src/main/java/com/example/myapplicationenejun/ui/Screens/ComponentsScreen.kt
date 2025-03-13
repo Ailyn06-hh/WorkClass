@@ -60,6 +60,7 @@ import androidx.compose.material3.InputChip
 import androidx.compose.material3.InputChipDefaults
 import androidx.compose.material3.LargeFloatingActionButton
 import androidx.compose.material3.LinearProgressIndicator
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.MediumTopAppBar
 import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.ModalNavigationDrawer
@@ -95,10 +96,12 @@ import com.example.myapplicationenejun.R
 import com.example.myapplicationenejun.data.MODEL.MenuModel
 import com.example.myapplicationenejun.data.MODEL.PostCardModel
 import com.example.myapplicationenejun.ui.components.PostCardCompactComponent
-import com.example.myapplicationenejun.ui.components.PostCardComponent
+import com.example.myapplicationenejun.ui.components.PostCardComponents
 import kotlinx.coroutines.launch
 import java.util.logging.Filter
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
+import androidx.window.core.layout.WindowHeightSizeClass
+import androidx.window.core.layout.WindowWidthSizeClass
 
 @Composable
 fun ComponentsScreen(navController: NavHostController){
@@ -505,8 +508,8 @@ fun Bars(){
         //can use MediumTopAppBar and other similar components to change the top bar size.
         TopAppBar(
             colors = TopAppBarDefaults.topAppBarColors(
-                containerColor = Color.Cyan,
-                titleContentColor = Color.Black
+                containerColor = MaterialTheme.colorScheme.primary,
+                titleContentColor = MaterialTheme.colorScheme.secondary
             ),
             title = { Text("Screen Title") },
             actions = {
@@ -550,11 +553,11 @@ fun Bars(){
               .weight(1f)
               .fillMaxSize()
         ){
-
+            Adaptive()
         }
         BottomAppBar(
-            containerColor = Color.LightGray,
-            contentColor = Color.Red,
+            containerColor = MaterialTheme.colorScheme.primary,
+            contentColor = MaterialTheme.colorScheme.secondary
         ){
             IconButton(
                 modifier = Modifier
@@ -595,10 +598,11 @@ fun Bars(){
     }
 }
 @Composable
-fun Adaptive(){
+fun Adaptive() {
     var windowSize = currentWindowAdaptiveInfo().windowSizeClass
-    var height= currentWindowAdaptiveInfo().windowSizeClass.windowHeightSizeClass
-    var size= currentWindowAdaptiveInfo().windowSizeClass.windowWidthSizeClass
+    var height = currentWindowAdaptiveInfo().windowSizeClass.windowHeightSizeClass
+    var width = currentWindowAdaptiveInfo().windowSizeClass.windowWidthSizeClass
+    var size = currentWindowAdaptiveInfo().windowSizeClass.windowWidthSizeClass
     //Compact width <600 dp Phone Portrait
     //Medium width >=600 dp < 840 Tablet Portrait
     // Expanded width >=840 dp Tablet Landscape
@@ -606,11 +610,36 @@ fun Adaptive(){
     //Compact Height < 480 dp Phone Landscape
     //Medium Height >=480 dp < 900 dp Tablet Landscape or Phone Portrait
     //Expanded height >=900 dp Tablet Portrait
-    Column {
-        Text (windowSize.toString())
-        Text(height.toString())
-        //Text(width.toString))
+    val arrayPosts = arrayOf(
+        PostCardModel(1, "Title 1", "Text 1", R.drawable.geto),
+        PostCardModel(2, "Title 2", "Text 2", R.drawable.geto),
+        PostCardModel(3, "Title 3", "Text 3", R.drawable.geto),
+        PostCardModel(4, "Title 4", "Text 4", R.drawable.geto),
+        PostCardModel(5, "Title 5", "Text 5", R.drawable.geto),
+        PostCardModel(6, "Title 6", "Text 6", R.drawable.geto),
+        PostCardModel(7, "Title 7", "Text 7", R.drawable.geto),
+        PostCardModel(8, "Title 8", "Text 8", R.drawable.geto),
+        PostCardModel(9, "Title 9", "Text 9", R.drawable.geto)
+    )
+    if (width == WindowWidthSizeClass.COMPACT) {
+        //can use Lazy Row to do the same but in a horizontal layout
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+        ) {
+            items(arrayPosts) { item ->
+                PostCardComponents(item.id, item.title, item.text, item.image)
+            }
+        }
+    } else if (height == WindowHeightSizeClass.COMPACT) {
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+        ) {
+            items(arrayPosts) { item ->
+                PostCardComponents(item.id, item.title, item.text, item.image)
+            }
+        }
     }
 }
-
 
