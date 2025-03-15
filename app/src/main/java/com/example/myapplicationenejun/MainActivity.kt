@@ -42,7 +42,6 @@ fun SetupNavGraph(navController: NavHostController) {
         composable("Main_Menu") { MainMenuScreens(navController) }  // Ruta para la pantalla del menú principal
         composable("Home_Screens") { HomeScreens(navController) }  // Ruta para la pantalla de inicio
         composable("Test_Screen") { TestScreen(navController) }  // Ruta para la pantalla de prueba
-       // composable("Liverpool_Screen") { InterfaceLiverpool(navController) }  // Ruta para la pantalla de prueba
         composable("Components_Screen") { ComponentsScreen(navController) }  // Ruta para la pantalla de prueba
     }
 }
