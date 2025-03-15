@@ -22,3 +22,8 @@ val LightBlue600 = Color(0xFF039BE5)
 val LightBlue700 = Color(0xFF0288D1)
 val LightBlue800 = Color(0xFF0277BD)
 val LightBlue900 = Color(0xFF01579B)
+
+val LightPrimary = Color(0xFF6200EE)
+val LightSecondary = Color(0xFF03DAC6)
+val DarkPrimary = Color(0xFFBB86FC)
+val DarkSecondary = Color(0xFF03DAC6)
